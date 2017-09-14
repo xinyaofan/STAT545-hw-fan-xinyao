@@ -1,18 +1,17 @@
 # STAT545-hw01-fan-xinyao
-# A Sample Readme in the Style of Github Markdown
+# A brief introduction for me 
 
-## Status
-
-|    **Item**    | **Status** |
+## information
+|   **Basic information**     |
 |----------------|------------|
-| Finished-ness  | :thumbsup: |
-| Happiness      | :bowtie:   |
-| Markdowny-ness | :octocat:  |
+| Name           | Xinyao Fan |
+| Gender         | Female     |
+| Department     | Statistics |
 
-## Overview
-**For your homework, you will be creating a readme document to introduce yourself to the class and experiment with the range of Markdown features.**
-
-The following readme document, however, is sillier and not meant to represent the type of readme document that you will be creating for your STAT 545a homework. Instead, it is meant to illustrate the range of what's possible in the world of Markdown. If you feel inspired by any part of this document, click the **raw** button above this file to see the source code that made it possible.
+## Education
+- University of British Columbia   Sep.2017 - present
+- University of Chinese Academy of Sciences
+- Lanzhou University
 
 ## Features
 
