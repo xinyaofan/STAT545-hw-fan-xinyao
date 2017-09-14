@@ -81,16 +81,13 @@ whatsyour <- function(x) {
 
 ### Imagining images
 
-This is my favourite actor!
-
 They say a picture is worth 1000 words - but have you ever considered how many lines of code that might convert to? Regardless of the answer, Markdown makes it easy include pictures of all sorts into your document. Don't believe me? See the source code yourself!
 
-![alt text](http://img4q.duitang.com/uploads/item/201505/19/20150519152139_SWQwm.jpeg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
+![alt text](https://imgs.xkcd.com/comics/stove_ownership.png "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
 
 We can even include gifs. Fancy that?
 
 ![](https://i.imgur.com/zNssDtS.gif)
-
 ### Link logic
 
 Let's say that the comic sourced in the previous section had a home page where it could be viewed - we can [link to that page using Markdown](https://xkcd.com/418/) with relative ease. If you look at the source code, it's really quite simple, so there's not much more to say about this here!
