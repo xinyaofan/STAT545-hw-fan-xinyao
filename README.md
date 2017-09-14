@@ -83,7 +83,9 @@ whatsyour <- function(x) {
 
 This is my favourite actor!
 
-![](https://www.duitang.com/blog/?id=367332177）
+They say a picture is worth 1000 words - but have you ever considered how many lines of code that might convert to? Regardless of the answer, Markdown makes it easy include pictures of all sorts into your document. Don't believe me? See the source code yourself!
+
+![alt text](http://img4q.duitang.com/uploads/item/201505/19/20150519152139_SWQwm.jpeg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
 
 We can even include gifs. Fancy that?
 
