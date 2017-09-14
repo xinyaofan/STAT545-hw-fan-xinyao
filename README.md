@@ -1,5 +1,6 @@
 # STAT545-hw01-fan-xinyao
 # A brief introduction for me 
+# Welcome to my github!
 
 ## Information
 |**Information** |            |
