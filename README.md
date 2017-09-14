@@ -1,7 +1,7 @@
 # STAT545-hw01-fan-xinyao
 # A brief introduction for me 
 
-## information
+## Information
 |**Information** |            |
 |----------------|------------|
 | Name           | Xinyao Fan |
