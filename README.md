@@ -102,9 +102,8 @@ Some common uses for incorporating HTML inline with Markdown include:
 - Including non-bordered tables to create makeshift columns
 - Facilitating perfectionism
 
-## Further Reading and Resources
-
-Still confused? Want to have some other resources to look at other than the source code of this readme.md file? Here are a few additional guides that you can reference as you complete your own readme.md file and beyond:
+## More about me
+### My homepage
 
 - [RStudio Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 - [Github Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
