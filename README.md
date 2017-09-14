@@ -9,9 +9,9 @@
 | Department     | Statistics |
 
 ## Education
-- University of British Columbia&emsp；&emsp；&emsp;Sep. 2017 - present
-- University of Chinese Academy of Sciences&emsp；&emsp；&emsp；Sep. 2016 - June. 2017
-- Lanzhou University&emsp；&emsp；&emsp；Sep. 2012 -  June. 2016
+- University of British Columbia &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
+- University of Chinese Academy of Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
+- Lanzhou University&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
 
 ## Features
 
