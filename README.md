@@ -83,7 +83,7 @@ whatsyour <- function(x) {
 
 This is my favourite actor!
 
-![alt text](https://www.duitang.com/blog/?id=367332177 "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
+![](https://www.duitang.com/blog/?id=367332177）
 
 We can even include gifs. Fancy that?
 
