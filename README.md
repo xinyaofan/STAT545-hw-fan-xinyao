@@ -23,7 +23,7 @@ This photo was taken in April, 2016 when I was traveling Xia'men.
 - Singing&emsp;You could listen to my songs on this website[My songs](http://kg.qq.com/node/personal?uid=65949885272b378b)
 - Baking&emsp;I feel really happy when baking, it could bring me a sense of fulfillment.
 
-### Idol
+## Idol
 My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she?
 
 ![alt text](http://img.idol001.com/origin/2017/04/22/641cbd75fe54452249fdb9cd32f5de111492855420.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
