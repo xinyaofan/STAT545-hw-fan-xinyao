@@ -28,8 +28,6 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 
 ![alt text](http://img.idol001.com/origin/2017/04/22/641cbd75fe54452249fdb9cd32f5de111492855420.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
 
-![](https://i.imgur.com/zNssDtS.gif)
-
 ## More about me
 ### My homepage
 
@@ -37,10 +35,3 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 - [Weibo](http://weibo.com/3149090360/profile?rightmod=1&wvr=6&mod=personinfo)
 - [LinkedIn](https://www.linkedin.com/in/%E8%BE%9B%E7%91%B6-%E8%8C%83-9b3371134/)
 
-## To-Dos
-
-- [x] @jrebane drafts initial sample readme
-- [x] Emoji's added
-- [x] Snarky text intensified
-- [x] Add useful reference resources
-- [ ] Reviewed by @jennybc
