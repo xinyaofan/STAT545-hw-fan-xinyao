@@ -14,7 +14,8 @@
 - Lanzhou University&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
 
 ## Photos
-![alt text]（http://ww2.sinaimg.cn/mw1024/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg）
+![alt text](http://ww2.sinaimg.cn/mw1024/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
+
 ## Features
 
 *The header above is "H2" size. The headers below will range from "H2" to "H4" depending on the number of hashtags in front of them*
