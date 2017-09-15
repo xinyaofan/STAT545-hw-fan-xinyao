@@ -105,10 +105,9 @@ Some common uses for incorporating HTML inline with Markdown include:
 ## More about me
 ### My homepage
 
-- [RStudio Markdown Cheat Sheet](https://www.facebook.com/xinyao.fan.946)
-- [Github Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-- [How to Set Up Sublime Text For Markdown Editing](http://plaintext-productivity.net/2-04-how-to-set-up-sublime-text-for-markdown-editing.html)
-- [Markdown Syntax Summary by John Gruber, Creator of Markdown Format](https://daringfireball.net/projects/markdown/syntax)
+- [Facebook](https://www.facebook.com/xinyao.fan.946)
+- [Weibo](http://weibo.com/3149090360/profile?rightmod=1&wvr=6&mod=personinfo)
+- [LinkedIn](https://www.linkedin.com/in/%E8%BE%9B%E7%91%B6-%E8%8C%83-9b3371134/)
 
 ## To-Dos
 
