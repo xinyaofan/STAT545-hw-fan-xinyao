@@ -13,6 +13,8 @@
 - University of Chinese Academy of Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
 - Lanzhou University&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
 
+## Photos
+![alt text]（http://ww2.sinaimg.cn/mw1024/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg）
 ## Features
 
 *The header above is "H2" size. The headers below will range from "H2" to "H4" depending on the number of hashtags in front of them*
