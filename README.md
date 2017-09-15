@@ -14,7 +14,7 @@
 - Lanzhou University&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
 
 ## Photos
-![alt text](http://ww2.sinaimg.cn/mw1024/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
+![alt text](http://ww2.sinaimg.cn/mw1024/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg?imageView/2/w/450/q/90"Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
 
 ## Features
 
