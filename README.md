@@ -7,7 +7,7 @@
 | Name           | Xinyao Fan |
 | Gender         | Female     |
 | Department     | Statistics |
-
+| Status         | Master stu |
 ## Education
 - University of British Columbia &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
 - University of Chinese Academy of Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
@@ -16,10 +16,12 @@
 ## Photos
 ![alt text](https://ww2.sinaimg.cn/thumb300/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
 
-We can even include gifs. Fancy that?
-## Features
+This photo was taken in April, 2016 when I was traveling Xia'men.
 
-*The header above is "H2" size. The headers below will range from "H2" to "H4" depending on the number of hashtags in front of them*
+## Hobbies
+- Reading&emsp;My favorite book is "the old man and the sea".
+- Singing&emsp;You could listen to my songs[My songs](http://kg.qq.com/node/personal?uid=65949885272b378b)
+- Baking&emsp;I feel really happy when baking, it could bring me a sense of fulfillment.
 
 ### Basic Word Processing and Manipulation
 
