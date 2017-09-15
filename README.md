@@ -20,8 +20,8 @@ This photo was taken in April, 2016 when I was traveling Xia'men.
 
 ## Hobbies
 - Reading&emsp;My favorite book is "the old man and the sea".
-- Singing&emsp;You could listen to my songs[My songs](http://kg.qq.com/node/personal?uid=65949885272b378b)
-- Baking&emsp;I feel really happy when baking, it could bring me a sense of fulfillment.
+- Singing&emsp;You could listen to my songs on this website[My songs](http://kg.qq.com/node/personal?uid=65949885272b378b)
+- Baking&emsp;&emsp;I feel really happy when baking, it could bring me a sense of fulfillment.
 
 ### Basic Word Processing and Manipulation
 
