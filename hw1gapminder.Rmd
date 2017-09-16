@@ -1,0 +1,31 @@
+---
+title: "Gapminder"
+output: github_document 
+---
+##Load the dataset
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+##Display the head and tail of the dataset
+```{r}
+head(gapminder)
+tail(gapminder)
+```
+##
+```{r}
+str(gapminder)
+```
+##plot between year and lifeExp
+```{r}
+plot(lifeExp ~ year, gapminder)
+```
+##plot between life expecation and 
+```{r}
+plot(lifeExp ~ gdpPercap, gapminder)
+```
+
+##plot between life expectation and 
+```{r}
+plot(lifeExp ~ log(gdpPercap), gapminder)
+```

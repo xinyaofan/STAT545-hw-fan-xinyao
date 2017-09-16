@@ -2,7 +2,7 @@
 # A brief introduction for me 
 
 ## information
-|   **Basic information**     |
+|**information** |            |
 |----------------|------------|
 | Name           | Xinyao Fan |
 | Gender         | Female     |
