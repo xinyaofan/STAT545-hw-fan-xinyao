@@ -7,7 +7,7 @@
 | Name           | Xinyao Fan |
 | Gender         | Female     |
 | Department     | Statistics |
-| Status         | Master stu |
+| Status         | Master |
 ## Education
 - University of British Columbia &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
 - University of Chinese Academy of Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
