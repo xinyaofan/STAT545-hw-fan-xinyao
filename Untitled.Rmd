@@ -1,0 +1,32 @@
+---
+title: "Gapminder"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+load the dataset
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+
+```{r}
+head(gapminder)
+tail(gapminder)
+```
+
+```{r}
+str(gapminder)
+```
+relationship between year and lifeExp
+```{r}
+plot(lifeExp ~ year, gapminder)
+```
+
+```{r}
+plot(lifeExp ~ gdpPercap, gapminder)
+```
+
+```{r}
+plot(lifeExp ~ log(gdpPercap), gapminder)
+```

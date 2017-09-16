@@ -80,7 +80,10 @@ plot(lifeExp ~ year, gapminder)
 plot(lifeExp ~ gdpPercap, gapminder)
 ```
 
-![](hw1gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png) \#\#plot between life expectation and
+![](hw1gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png)
+
+plot between life expectation and
+---------------------------------
 
 ``` r
 plot(lifeExp ~ log(gdpPercap), gapminder)
