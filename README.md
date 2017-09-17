@@ -36,10 +36,13 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 
 <<<<<<< HEAD
 ## Report
-  I use two methods to edit my README file
-- Open the README file in R studio, and make changes locally. After making changes in the file, save the files and then commit and push to the github. Before you click "push", usually it's a good habit to click "pull", because it can help us to make sure everything is up to date. I have to say, R studio is a good txt editor for github.
+### I use two methods to edit my README file
+- Open the README file in R studio, and make changes locally. After making changes in the file, save the files and then commit and push to the github. Before you click "push", usually it's a good habit to click "pull", because it can help us to make sure everything is up to date. I have to say, R studio is a good txt editor for github. Editing the R markdown document is the same, you can make changes in the R markdown file(created in R studio), and then commit and push to github.
 - Make changes in the brower at github. This is also a good way to make changes in the file. A useful tip is that before you commit your changes, you can preview. 
-=======
+### Difficulites
+Since I have never used markdown before, it's difficult for me to produce a tidy and beautiful format. After reading some helpful [tutorials](https://daringfireball.net/projects/markdown/) about the markdown syntax, things become better.
+
+
 ## To-Dos
 
 - [x] Education experience
@@ -47,5 +50,3 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 - [x] Hobbies
 - [x] Homepage
 - [ ] Research experience
-
->>>>>>> 6ec01a31c3dee1d4127403f909095b34406e5c57
