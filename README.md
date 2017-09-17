@@ -1,11 +1,6 @@
 # STAT545-hw01-fan-xinyao
 # Welcome to my github!
 
-<<<<<<< HEAD
-## information
-|**information** |            |
-=======
-## Information
 |**Information** |            |
 >>>>>>> 1e84e971865c37ce631824e8870479c472c88eb3
 |----------------|------------|
@@ -14,9 +9,9 @@
 | Department     | Statistics |
 | Status         | Master |
 ## Education
-- University of British Columbia &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
-- University of Chinese Academy of Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
-- Lanzhou University&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
+-** University of British Columbia** &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
+- **University of Chinese Academy of** Sciences&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
+- **Lanzhou University**&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2012 -  June. 2016
 
 ## Photos
 ![alt text](https://ww2.sinaimg.cn/thumb300/bbb34e38jw1f371h5imm6j20qo0zktbm.jpg "Although maybe it's just a phase, like freshman year of college when I realized I could just buy frosting in a can.")
@@ -40,3 +35,7 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 - [Weibo](http://weibo.com/3149090360/profile?rightmod=1&wvr=6&mod=personinfo)
 - [LinkedIn](https://www.linkedin.com/in/%E8%BE%9B%E7%91%B6-%E8%8C%83-9b3371134/)
 
+## Report
+  I use two methods to edit my README file
+- Open the README file in R studio, and make changes locally. After making changes in the file, save the files and then commit and push to the github. Before you click "push", usually it's a good habit to click "pull", because it can help us to make sure everything is up to date. I have to say, R studio is a good txt editor for github.
+- Make changes in the brower at github. This is also a good way to make changes in the file. A useful tip is that before you commit your changes, you can preview. 
