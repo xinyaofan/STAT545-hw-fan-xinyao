@@ -34,3 +34,11 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 - [Weibo](http://weibo.com/3149090360/profile?rightmod=1&wvr=6&mod=personinfo)
 - [LinkedIn](https://www.linkedin.com/in/%E8%BE%9B%E7%91%B6-%E8%8C%83-9b3371134/)
 
+## To-Dos
+
+- [x] Education experience
+- [x] Photos
+- [x] Hobbies
+- [x] Homepage
+- [ ] Research experience
+
