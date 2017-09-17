@@ -1,13 +1,7 @@
 # STAT545-hw01-fan-xinyao
 # Welcome to my github!
 
-<<<<<<< HEAD
-## information
-|**information** |            |
-=======
-## Information
 |**Information** |            |
->>>>>>> 1e84e971865c37ce631824e8870479c472c88eb3
 |----------------|------------|
 | Name           | Xinyao Fan |
 | Gender         | Female     |
