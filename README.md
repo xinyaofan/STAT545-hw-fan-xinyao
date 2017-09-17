@@ -2,7 +2,6 @@
 # Welcome to my github!
 
 |**Information** |            |
->>>>>>> 1e84e971865c37ce631824e8870479c472c88eb3
 |----------------|------------|
 | Name           | Xinyao Fan |
 | Gender         | Female     |
@@ -35,7 +34,18 @@ My favorite actress is Shishi Liu, I love her drama. She is beautiful, isn't she
 - [Weibo](http://weibo.com/3149090360/profile?rightmod=1&wvr=6&mod=personinfo)
 - [LinkedIn](https://www.linkedin.com/in/%E8%BE%9B%E7%91%B6-%E8%8C%83-9b3371134/)
 
+<<<<<<< HEAD
 ## Report
   I use two methods to edit my README file
 - Open the README file in R studio, and make changes locally. After making changes in the file, save the files and then commit and push to the github. Before you click "push", usually it's a good habit to click "pull", because it can help us to make sure everything is up to date. I have to say, R studio is a good txt editor for github.
 - Make changes in the brower at github. This is also a good way to make changes in the file. A useful tip is that before you commit your changes, you can preview. 
+=======
+## To-Dos
+
+- [x] Education experience
+- [x] Photos
+- [x] Hobbies
+- [x] Homepage
+- [ ] Research experience
+
+>>>>>>> 6ec01a31c3dee1d4127403f909095b34406e5c57
