@@ -1,0 +1,157 @@
+---
+title: "Hw02"
+author: "Xinyao Fan"
+date: '2017-09-22'
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+## Smell test the data
+**Q1**: Is it a data.frame, a matrix, a vector, a list?
+```{r}
+typeof(gapminder)
+```
+It is a list.\
+
+**Q2**: What's its class?
+```{r}
+class(gapminder)
+```
+There are three classes in "gapminder": tbl_df, tbl and data.frame.\
+
+**Q3**: How many variables/columns?
+```{r}
+ncol(gapminder)
+```
+There are 6 variables in gapminder.\
+
+**Q4**: How many rows/observations?
+```{r}
+nrow(gapminder)
+```
+There are 1704 observations.\
+
+**Q5**: Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
+```{r}
+dim(gapminder)
+str(gapminder)
+```
+You can get these facts also using **dim( )**or **str( )**, using 'dim', you can get both columns and rows of the dataset.\ For'str()', it can give the following information of dataset: the dimension of the dataset, class, variables, the type of variables and the levels(values) of the variables. So, it can provide a detailed overview of the dataset.\
+**Q6**: What data type is each variable?
+As the results showed by 'str(gapminder)', \
+country: Factor\
+continent: Factor\
+year: int\
+LifeExp: num\
+pop: int\
+gdpPercap: num
+
+## Explore individual variables
+I will choose categorical variable: continent and quantitative variable: gdpPercap.\
+\
+**Q1**: what are possbile values(or range, whichever is appropriate) of each variable?
+```{r}
+summary(gapminder$continent)
+```
+There are 5 levels of variable'continent': Africa, Americas, Asia, Europe and Oceania.\
+```{r}
+summary(gapminder$gdpPercap)
+```
+GdpPercap ranges from 241.2 to 113523.1. The mean, median of the dataset is 7215.3, 3531.8 and half of the data is in the range(1202.1, 9325.5)\
+**Q2**: What values are typical? What’s the spread? What’s the distribution? 
+```{r}
+table(gapminder$continent)
+```
+From this table, most of the data comes from Africa while few data comes from Oceania. Actually, we can get the exact value of the number of data for each continent from the table.\
+As for the lifExp variable(quantative variable), we'd better use histogram to find its distribution.
+```{r}
+hist(gapminder$gdpPercap)
+```
+
+From this picture, we can clearly see its distribution skewed to the right. Most of the data fall in the interval(0,20000).
+
+## Explore various plot types
+- A scatterplot of two quantitative variables.
+- A plot of one quantitative variable. Maybe a histogram or densityplot or frequency polygon.
+- A plot of one quantitative variable and one categorical. Maybe boxplots for several continents or countries.
+
+###scatterplot
+```{r}
+p<-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) 
+p+geom_point(alpha=0.2)
+```
+
+log transform
+```{r}
+p<- p+ geom_point(alpha=0.2)+ scale_x_log10()
+```
+
+MAP continent variable to aesthetic color
+```{r}
+p + geom_point(aes(color = continent))
+```
+
+Since data of 'Africa' is typical, we will explore the subset of the data and only consider the data in 'Africa' continent.
+
+```{r}
+subset<-gapminder %>%
+  filter(continent %in% "Africa") %>%
+  select(country, year, lifeExp, gdpPercap)
+```
+```{r}
+ggplot(subset, aes(x = gdpPercap, y = lifeExp, color = year))+ geom_point(alpha=0.2)+scale_x_log10()+geom_smooth()
+```
+
+###A plot of one quantitative variable: lifeExp
+
+**Plot1:histogram**
+```{r}
+p1<-ggplot(gapminder,aes(x = lifeExp, fill = continent))
+p1+geom_histogram(position = "identity")
+```
+
+**Plot2:frenquency polygon for continents execpt Oceania**
+```{r}
+ggplot(subset(gapminder,continent!="Oceania"), aes(x = lifeExp, color = continent)) +geom_freqpoly()
+```
+
+**Plot3:density plot for Africa and Europe**
+```{r}
+ggplot(subset(gapminder, continent %in% c("Africa","Europe")),
+       aes(x = lifeExp, fill = continent)) + geom_density(alpha = 0.2)
+```
+
+###A plot of one quantitative variable and one categorical
+```{r}
+p3 <- ggplot(gapminder,aes(x=continent,y=lifeExp))
+p3 + geom_boxplot(color="light pink")
+```
+
+Now, we explore a subset of data.
+```{r}
+out1<-gapminder%>%
+  group_by(country)%>%
+  mutate(gdp  = gdpPercap * pop, gdpBill = round(gdp/1000000000, 1),mean_gdp=mean(gdpBill))%>%
+  filter(continent == "Asia", mean_gdp > 1000)
+ggplot(out1, aes(x=country,y=lifeExp)) + geom_boxplot()
+```
+
+##More things
+Evaluate this code and describe the result.
+```{r}
+knitr::kable(filter(gapminder, country == c("Rwanda", "Afghanistan")))
+```
+
+The result is not correct, becasue they omit several lines. When we use logic symbol "==",the first country will compare with "Rwanda", the second one will compare with"Afghanistan", the third one will compare with "Rwanda", the fourth will compare with"Afghanistan".So, it lost half of the data. The correct one is the following:
+```{r}
+knitr::kable(filter(gapminder, country%in%c("Rwanda","Afghanistan")))
+```
+
+##Report
+For this homework, it is easy to use a single syntax, such as get the subset of data, plot a historgram or boxplot(even we have nott studied class). However, when I combined these syntax together to analyze a complex problem, things become difficult. 
