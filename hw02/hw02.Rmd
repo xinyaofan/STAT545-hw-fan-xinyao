@@ -137,7 +137,7 @@ Now, we explore a subset of data.
 ```{r}
 out1<-gapminder%>%
   group_by(country)%>%
-  mutate(gdp  = gdpPercap * pop, gdpBill = round(gdp/1000000000, 1),mean_gdp=mean(gdpBill))%>%
+  mutate(gdp=gdpPercap * pop, gdpBill=round(gdp/1000000000, 1),mean_gdp=mean(gdpBill))%>%
   filter(continent == "Asia", mean_gdp > 1000)
 ggplot(out1, aes(x=country,y=lifeExp)) + geom_boxplot()
 ```
@@ -154,4 +154,8 @@ knitr::kable(filter(gapminder, country%in%c("Rwanda","Afghanistan")))
 ```
 
 ##Report
-For this homework, it is easy to use a single syntax, such as get the subset of data, plot a historgram or boxplot(even we have nott studied class). However, when I combined these syntax together to analyze a complex problem, things become difficult. 
+For this homework, it is easy to use a single syntax, such as get the subset of data, plot a historgram or boxplot(even we have not studied at class).\
+ 
+However, when I combined these syntax together to analyze a complex problem, things become difficult. For instance, I want to select the countries whose mean GDP is over 1000 billion in Asia, and then compare the life expectation of these countries. It took me a long time coding to work out, because I need to use piping, filter, mutate, group_by and ggplot to slove this problem. First, I used summarise() to get the mean GDP of each country.However, if I use 'summarise(mean_gdp=mean(gdpBill))', I will just get the data about country and their mean_gdp and lost the information about their life expectation and continent, so I can not get a boxplot.\
+
+I found a helpful [tutorial](https://github.com/jennybc/ggplot2-tutorial/blob/master/README.md) and I learned how to draw scatterplot, histogram, boxplot, and other plots from this website.
