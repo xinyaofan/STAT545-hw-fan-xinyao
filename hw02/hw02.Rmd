@@ -167,7 +167,6 @@ gapminder %>%
 ```
 
 ##More things
-
 Evaluate this code and describe the result.
 ```{r}
 knitr::kable(filter(gapminder, country == c("Rwanda", "Afghanistan")))
