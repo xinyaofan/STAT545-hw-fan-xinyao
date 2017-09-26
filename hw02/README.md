@@ -3,7 +3,7 @@
 output: 
   github_document
 ---
-##STAT545-hw02-Xinyao Fan
+##STAT545-hw02-Xinyao Fan##
 
 ### Status
 - [x] Make a homework repo
@@ -18,6 +18,6 @@ output:
 
 ### Links for Homework 2
 
-  [hw02.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw02/hw02.md)
+ - [hw02.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw02/hw02.md)
 
-  [hw02.Rmd](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw02/hw02.Rmd)
+ - [hw02.Rmd](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw02/hw02.Rmd)
