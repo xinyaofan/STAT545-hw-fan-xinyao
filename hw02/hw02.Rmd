@@ -165,6 +165,7 @@ gapminder %>%
   filter(country %in% c("Canada", "China", "Japan", "Mexico"))%>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
 ```
+
 ##More things
 
 Evaluate this code and describe the result.
