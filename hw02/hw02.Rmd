@@ -128,11 +128,14 @@ ggplot(subset(gapminder, continent %in% c("Africa","Europe")),
 ```
 
 ###A plot of one quantitative variable and one categorical
+
+lifeExpection for different continents
 ```{r}
 p3 <- ggplot(gapminder,aes(x=continent,y=lifeExp))
 p3 + geom_boxplot(color="light pink")
 ```
 
+Life Expectation for different countries
 ```{r}
 gapminder%>%
   filter(country%in%c("China","Japan","Mexico","Canada"))%>%
