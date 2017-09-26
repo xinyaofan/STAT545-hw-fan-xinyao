@@ -1,9 +1,5 @@
 
----
-output: 
-  github_document
----
-##STAT545-hw02-Xinyao Fan##
+## Stat545-Hw02-Xinyao Fan
 
 ### Status
 - [x] Make a homework repo
