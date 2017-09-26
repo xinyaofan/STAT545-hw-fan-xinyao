@@ -133,6 +133,12 @@ p3 <- ggplot(gapminder,aes(x=continent,y=lifeExp))
 p3 + geom_boxplot(color="light pink")
 ```
 
+```{r}
+gapminder%>%
+  filter(country%in%c("China","Japan","Mexico","Canada"))%>%
+  ggplot(aes(x=country,y=lifeExp))+geom_boxplot(aes(color=country))
+```
+
 Now, we explore a subset of data. We want to compare the life expectation of coutries in Aisa whose mean GDP is over 1000 billion.
 ```{r}
 out1<-gapminder%>%
@@ -143,6 +149,7 @@ ggplot(out1, aes(x=country,y=lifeExp)) + geom_boxplot()
 ```
 
 So,only China and Japan have mean GDP>1000 in Asia, and obviously, the life expectation of Japan is longer then it of China.
+
 ### Use filter(), selcet() and %>%
 
 Actually, we have used filter(), select() and piping above, but we want to pratice more.
