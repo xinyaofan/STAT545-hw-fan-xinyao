@@ -81,7 +81,7 @@ From this picture, we can clearly see its distribution skewed to the right. Most
 - A plot of one quantitative variable. Maybe a histogram or densityplot or frequency polygon.
 - A plot of one quantitative variable and one categorical. Maybe boxplots for several continents or countries.
 
-###scatterplot
+###scatterplot of gdpPercap vs lifeExp
 ```{r}
 p<-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) 
 p+geom_point(alpha=0.2)
@@ -143,21 +143,37 @@ ggplot(out1, aes(x=country,y=lifeExp)) + geom_boxplot()
 ```
 
 So,only China and Japan have mean GDP>1000 in Asia, and obviously, the life expectation of Japan is longer then it of China.
+### Use filter(), selcet() and %>%
 
+Actually, we have used filter(), select() and piping above, but we want to pratice more.
+If we want to compare the gdpperCap of several coutries: China, Japan, Canada, and Mexico.
+```{r}
+subset=filter(gapminder,country %in% c("Canada", "China", "Japan", "Mexico"))
+ggplot(subset, aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
+```
+
+Now, we can try to use piping.
+```{r}
+gapminder %>%
+  filter(country %in% c("Canada", "China", "Japan", "Mexico"))%>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
+```
 ##More things
+
 Evaluate this code and describe the result.
 ```{r}
 knitr::kable(filter(gapminder, country == c("Rwanda", "Afghanistan")))
 ```
 
 The result is not correct, becasue they omit several lines. When we use logic symbol "==",the first country will compare with "Rwanda", the second one will compare with"Afghanistan", the third one will compare with "Rwanda", the fourth will compare with"Afghanistan" and so on. So, it lost half of the data. The correct one is the following:
+
 ```{r}
 knitr::kable(filter(gapminder, country%in%c("Rwanda","Afghanistan")))
 ```
 
 ##Report
-For this homework, it is easy to use a single syntax, such as get the subset of data, plot a historgram or boxplot(even we have not studied at class).\
+For this homework, it is easy to use a single syntax, such as get the subset of data, plot a historgram or boxplot(even we have not studied at class).<br>
  
-However, when I combined these syntax together to analyze a complex problem, things become difficult. For instance, I want to select the countries whose mean GDP is over 1000 billion in Asia, and then compare the life expectation of these countries. It took me a long time coding to work out, because I need to use piping, filter, mutate, group_by and ggplot to slove this problem. First, I used summarise(m) to get the mean GDP of each country. However, if I use 'summarise(mean_gdp=mean(gdpBill))', I will just get the data about country and their mean_gdp and lost the information about their life expectation and continent, so I can not get a boxplot.\
+However, when I combined these syntax together to analyze a complex problem, things become difficult. For instance, I want to select the countries whose mean GDP is over 1000 billion in Asia, and then compare the life expectation of these countries. It took me a long time coding to work out, because I need to use piping, filter, mutate, group_by and ggplot to slove this problem. First, I used summarise(m) to get the mean GDP of each country. However, if I use 'summarise(mean_gdp=mean(gdpBill))', I will just get the data about country and their mean_gdp and lost the information about their life expectation and continent, so I can not get a boxplot.<br>
 
 I found a helpful [tutorial](https://github.com/jennybc/ggplot2-tutorial/blob/master/README.md) and I learned how to draw scatterplot, histogram, boxplot, and other plots from this website.
