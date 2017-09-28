@@ -1,0 +1,72 @@
+---
+title: "Hw03"
+author: "Xinyao Fan"
+date: '2017-09-28'
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(gapminder)
+library(tidyverse)
+```
+## Task Menu
+
+**Q1**
+Get the maximum and minimum of GDP per capita for all continents.
+
+```{r}
+out<-gapminder%>%
+  group_by(continent)%>%
+  summarise(max_gdpPercap=max(gdpPercap), min_gdpPercap=min(gdpPercap))
+knitr::kable(out)
+```
+
+**Q2**
+Look at the spread of GDP per capita within the continents.
+```{r}
+out1<-gapminder%>%
+  group_by(continent)%>%
+  summarise(sd(gdpPercap), IQR=quantile(gdpPercap,0.75)-quantile(gdpPercap,0.25))
+knitr::kable(out1)
+```
+
+**Q3**
+Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.<br>
+
+*trimmed mean*
+```{r}
+out3<-gapminder%>%
+  group_by(year)%>%
+  summarise(mean_trim=mean(lifeExp,trim=0.2))
+knitr::kable(out3)
+```
+
+*weighted mean*
+```{r}
+out4<-gapminder%>%
+  group_by(continent)%>%
+  summarise(weighted_mean=weighted.mean(lifeExp,pop))
+knitr::kable(out4)
+```
+
+**Q4**
+How is life expectancy changing over time on different continents?
+```{r}
+ggplot(gapminder, aes(year, lifeExp)) +
+    facet_wrap(~ continent) +
+    geom_point() +
+    geom_smooth(se=FALSE, span=1, method="loess")
+```
+## Including P
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
