@@ -25,6 +25,11 @@ out<-gapminder%>%
 knitr::kable(out)
 ```
 
+Combined the above table and this plot, we could see the maximum and minimum of gdpPercap for each continent more clearly.
+```{r}
+ggplot(gapminder,aes(x=continent,y=gdpPercap))+geom_point(aes(color=continent))
+```
+
 **Q2**
 Look at the spread of GDP per capita within the continents.
 ```{r}
@@ -34,6 +39,12 @@ out1<-gapminder%>%
 knitr::kable(out1)
 ```
 
+```{r}
+ggplot(gapminder, aes(x = continent, y = gdpPercap)) +
+  geom_boxplot(outlier.colour = "yellow") +
+  geom_jitter(position = position_jitter(width = 1, height = 10), alpha = 0.1)
+```
+
 **Q3**
 Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.<br>
 
@@ -41,27 +52,46 @@ Compute a trimmed mean of life expectancy for different years. Or a weighted mea
 ```{r}
 out3<-gapminder%>%
   group_by(year)%>%
-  summarise(mean_trim=mean(lifeExp,trim=0.2))
+  summarise(mean_trim=mean(lifeExp,trim=0.2),weighted_mean=weighted.mean(lifeExp,pop))
 knitr::kable(out3)
 ```
 
-*weighted mean*
+In this plot, we compare life expectations for different years calculated by two different methods. 
 ```{r}
-out4<-gapminder%>%
-  group_by(continent)%>%
-  summarise(weighted_mean=weighted.mean(lifeExp,pop))
-knitr::kable(out4)
+ggplot(out3,aes(year,mean_trim))+geom_line(color="green")+geom_line(aes(year,weighted_mean),color="red")+labs(x="year", 
+          y="Life Expectancy",
+          title="My Plot")
 ```
 
 **Q4**
 How is life expectancy changing over time on different continents?
+```{r}
+out4<-gapminder%>% 
+  group_by(continent,year)%>% 
+  summarise(mean_lifeExp=mean(lifeExp))%>%
+  mutate(diff_lifeExp=c(0,diff(mean_lifeExp)))
+knitr::kable(out4)
+```
+ 
+In this table, we calculated the mean life expectation of different continents every year as well as the differences over time on different continents. 
+
 ```{r}
 ggplot(gapminder, aes(year, lifeExp)) +
     facet_wrap(~ continent) +
     geom_point() +
     geom_smooth(se=FALSE, span=1, method="loess")
 ```
-## Including P
+
+From this plot, the trend of life expectation change is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
+
+```{r}
+gapminder%>%
+ ggplot(aes(year, lifeExp, group=continent)) +
+    facet_wrap(~ continent) +
+    geom_line(aes(color=continent,group=country))
+```
+
+## Report of Process
 
 You can also embed plots, for example:
 
