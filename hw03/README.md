@@ -1,5 +1,5 @@
 
-### Links for Homework 2
+### Links for Homework 3
 
  - [hw03.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw03/hw03.md)
 
