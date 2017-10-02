@@ -26,8 +26,9 @@ knitr::kable(out)
 ```
 
 Combined the above table and this plot, we could see the maximum and minimum of gdpPercap for each continent more clearly.
+
 ```{r}
-ggplot(gapminder,aes(x=continent,y=gdpPercap))+geom_point(aes(color=continent))
+ggplot(gapminder,aes(x=continent,y=gdpPercap))+geom_point(aes(color=continent))+theme_bw()+labs(title="continent vs gdpPercap")
 ```
 
 Actually, we can know which continent and when gets the largest gdpPercap using the following code:
