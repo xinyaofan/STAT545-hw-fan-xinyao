@@ -30,6 +30,13 @@ Combined the above table and this plot, we could see the maximum and minimum of 
 ggplot(gapminder,aes(x=continent,y=gdpPercap))+geom_point(aes(color=continent))
 ```
 
+Actually, we can know which continent and when gets the largest gdpPercap using the following code:
+```{r}
+gapminder$continent[gapminder$gdpPercap==max(gapminder$gdpPercap)]
+gapminder$year[gapminder$gdpPercap==max(gapminder$gdpPercap)]
+```
+
+So, it is Asia achieved the largest gdpPercap in 1957. 
 **Q2**
 Look at the spread of GDP per capita within the continents.
 ```{r}
@@ -39,6 +46,7 @@ out1<-gapminder%>%
 knitr::kable(out1)
 ```
 
+In order to see the spread of gdpPercap for different continents, we draw five boxplots. Combined the table and boxplot, we could draw conclusion that the gdpPercap in Asia is the most spread out, because of its high standrad deviation. Also, it has many outliers. The data of Africa is not very spread out.
 ```{r}
 ggplot(gapminder, aes(x = continent, y = gdpPercap)) +
   geom_boxplot(outlier.colour = "yellow") +
@@ -82,7 +90,7 @@ ggplot(gapminder, aes(year, lifeExp)) +
     geom_smooth(se=FALSE, span=1, method="loess")
 ```
 
-From this plot, the trend of life expectation change is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
+From this plot, the trend of change for life expectation is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
 
 ```{r}
 gapminder%>%
@@ -92,11 +100,6 @@ gapminder%>%
 ```
 
 ## Report of Process
+For this homework, I find it not difficult to draw a table for the data except the Question 4, since there are (n-1)differences between n data, it took me a while to consider how to deal with this situation. Table beauty is not a big deal, using knitr::kable could give my tables a beautiful format.<br>
+However, it is a little difficult for me to find the proper type of plot to answer the corresponding questions. For example, I am not sure how to clearly show the maximum and minimum of gdpPercap in a plot. Also, when I draw a boxplot for the gdpPercap in different continents, the boxplot for Africa is not clear. I find it difficult to adjust the size of plots, becasue I am confused about the values of parameter in ggplot. In conlusion, combined tables and plots to analyze a explicit question is not a very easy task.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
