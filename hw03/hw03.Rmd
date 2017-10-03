@@ -97,9 +97,12 @@ In this table, we calculated the mean life expectation of different continents e
 ```{r}
 ggplot(gapminder, aes(year, lifeExp)) +
     facet_wrap(~ continent) +
-    geom_point() +
+    geom_point(alpha=0.5) +
     geom_smooth(se=FALSE, span=1, method="loess")+theme_bw() +
-  labs(title=" LifeExp vs Year")
+  labs(title=" LifeExp vs Year")+theme(strip.background = element_rect(fill="light blue"),
+          axis.title = element_text(size=14),
+          strip.text = element_text(size=14, face="bold"))
+
 ```
 
 From this plot, the trend of change for life expectation is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
