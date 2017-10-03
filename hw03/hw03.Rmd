@@ -25,11 +25,21 @@ out<-gapminder%>%
 knitr::kable(out)
 ```
 
-Combined the above table and this plot, we could see the maximum and minimum of gdpPercap for each continent more clearly.
-
 ```{r}
 ggplot(gapminder,aes(x=continent,y=gdpPercap))+geom_point(aes(color=continent))+theme_bw()+labs(title="continent vs gdpPercap")
 ```
+Combined the above table and this plot, we could see the maximum for each continent clearly, but it's not easy to see the minmum value, so we try to do more.
+
+```{r}
+gapminder%>%
+  group_by(continent)%>%
+  mutate(ccolor=(min(gdpPercap) == gdpPercap))%>%
+  mutate(ssize=(max(gdpPercap)==gdpPercap))%>%
+  ggplot(aes(x=year,y=gdpPercap))+geom_point(aes(color=ccolor,size=ssize))+facet_wrap(~continent)
+  
+```
+
+So, in the above plot, the green point indicates the minmum gdpPercap, the big red circle indicates the maximum gdpPercap, now we can find their position quickly.<br>
 
 Actually, we can know which continent and when gets the largest gdpPercap using the following code:
 ```{r}
@@ -88,7 +98,8 @@ In this table, we calculated the mean life expectation of different continents e
 ggplot(gapminder, aes(year, lifeExp)) +
     facet_wrap(~ continent) +
     geom_point() +
-    geom_smooth(se=FALSE, span=1, method="loess")
+    geom_smooth(se=FALSE, span=1, method="loess")+theme_bw() +
+  labs(title=" LifeExp vs Year")
 ```
 
 From this plot, the trend of change for life expectation is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
@@ -97,7 +108,8 @@ From this plot, the trend of change for life expectation is clear to see, the li
 gapminder%>%
  ggplot(aes(year, lifeExp, group=continent)) +
     facet_wrap(~ continent) +
-    geom_line(aes(color=continent,group=country))
+    geom_line(aes(color=continent,group=country))+theme_bw() +
+  labs(title=" LifeExp vs Year")
 ```
 
 ## Report of Process
