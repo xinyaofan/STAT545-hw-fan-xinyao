@@ -102,7 +102,6 @@ ggplot(gapminder, aes(year, lifeExp)) +
   labs(title=" LifeExp vs Year")+theme(strip.background = element_rect(fill="light blue"),
           axis.title = element_text(size=14),
           strip.text = element_text(size=14, face="bold"))
-
 ```
 
 From this plot, the trend of change for life expectation is clear to see, the life expectation of each continent increases over time. Also, we could draw a line plot.
