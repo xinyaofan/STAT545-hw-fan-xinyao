@@ -91,6 +91,7 @@ out4<-gapminder%>%
   mutate(diff_lifeExp=c(0,diff(mean_lifeExp)))
 knitr::kable(out4)
 ```
+
 In this table, we calculated the mean life expectation of different continents every year as well as the differences over time on different continents. 
 
 ```{r}
