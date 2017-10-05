@@ -9,14 +9,22 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r}
+library(gapminder)
+library(tidyverse)
+```
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Activity #3
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Compute some measure of life expectancy (mean? median? min? max?) for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year.
+Use knitr::kable() to make these tables look pretty in your rendered homework.
+Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
 
-```{r cars}
-summary(cars)
+```{r}
+out<-gapminder%>%
+  group_by(continent,year)%>%
+  summarise(mean_life=mean(lifeExp),median_life=median(lifeExp),min_life=min(lifeExp),max_life=max(lifeExp))
+knitr::kable(out)
 ```
 
 ## Including Plots
