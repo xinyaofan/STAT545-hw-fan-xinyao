@@ -48,7 +48,7 @@ knitr::kable(out2)
 Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
 ```{r}
 out1%>%
-  ggplot(aes(x=Asia,y=Europe)) + geom_point()
+  ggplot(aes(x=Asia,y=Europe)) + geom_point()+labs(title="Mean life expectation for Asia and Europe")+geom_text(aes(label=year),hjust=1.1, vjust=0)
 ```
 
 The data in this shape will be easier to plot the above scatterplot. In such plot, we could get the information about life expectations in two countries simultaneously.
