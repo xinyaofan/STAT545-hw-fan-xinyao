@@ -41,13 +41,6 @@ gapminder%>%
 
 So, in the above plot, the green point indicates the minmum gdpPercap, the big red circle indicates the maximum gdpPercap, now we can find their position quickly.<br>
 
-Actually, we can know which continent and when gets the largest gdpPercap using the following code:
-```{r}
-gapminder$continent[gapminder$gdpPercap==max(gapminder$gdpPercap)]
-gapminder$year[gapminder$gdpPercap==max(gapminder$gdpPercap)]
-```
-
-So, it is Asia achieved the largest gdpPercap in 1957. 
 **Q2**
 Look at the spread of GDP per capita within the continents.
 ```{r}
@@ -77,9 +70,7 @@ knitr::kable(out3)
 
 In this plot, we compare life expectations for different years calculated by two different methods. 
 ```{r}
-ggplot(out3,aes(year,mean_trim))+geom_line(color="green")+geom_line(aes(year,weighted_mean),color="red")+labs(x="year", 
-          y="Life Expectancy",
-          title="My Plot")
+ggplot(out3,aes(year,mean_trim))+geom_line(color="green")+geom_line(aes(year,weighted_mean),color="red")+labs(x="year", y="Life Expectancy",title="MyPlot")+scale_fill_discrete(name="",labels=c("mean_trim","weighted_mean"))
 ```
 
 **Q4**
