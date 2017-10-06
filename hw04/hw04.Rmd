@@ -14,12 +14,14 @@ library(gapminder)
 library(tidyverse)
 ```
 
-## Activity #3
+## General data reshaping and relationship to aggregation
+
+###Activity 3
 
 Compute some measure of life expectancy (mean? median? min? max?) for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year.
 Use knitr::kable() to make these tables look pretty in your rendered homework.
-Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
 
+The usual form of data:
 ```{r}
 out<-gapminder%>%
   group_by(continent,year)%>%
@@ -27,12 +29,142 @@ out<-gapminder%>%
 knitr::kable(out)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+We choose the variable: mean_life. From the following table, we could know the mean life expecation for each continent every year.
+```{r}
+out1<-out%>%
+  select(year,continent,mean_life)%>%
+  spread(key=continent, value=mean_life)
+knitr::kable(out1)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Also, we could get a table like this.
+```{r}
+out2<-out%>%
+  select(year,continent,mean_life)%>%
+  spread(key=year, value=mean_life)
+knitr::kable(out2)
+```
+
+Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
+```{r}
+out1%>%
+  ggplot(aes(x=Asia,y=Europe)) + geom_point()
+```
+
+The data in this shape will be easier to plot the above scatterplot. In such plot, we could get the information about life expectations in two countries simultaneously.
+
+## Join, merge, look up
+Cheatsheet for join function
+
+We will Work with two small data.frames, hamburgers and sellers.
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+library(readr)
+```
+
+```{r}
+hamburgers<- "
+          name,        calories,     meat,       company
+   Filter_Fish,             400,     fish,      Mcdonald
+       Big mac,             520,     beef,      Mcdonald
+    Mc_chicken,             470,  chicken,      Mcdonald
+     Mc_double,             370,     beef,      Mcdonald
+Triple_whopper,            1070,     beef,    BurgerKing
+Crispy_chicken,             290,  chicken,    BurgerKing
+    Big_crunch,             490,  chicken,           KFC
+"
+hamburgers <- read_csv(hamburgers, trim_ws = TRUE, skip = 1)
+sellers <- "
+    company, yr_founded
+ BurgerKing,       1954
+   Mcdonald,       1940
+   pizzahut,       1960
+"
+sellers <- read_csv(sellers, trim_ws = TRUE, skip = 1)
+```
+
+Sub-plot: watch the row and variable order of the join results for a healthy reminder of why it’s dangerous to rely on any of that in an analysis.
+
+### inner_joint(hamburgers,Sellers)
+*inner_join(x, y): Return all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join*
+```{r}
+(ijhs <- inner_join(hamburgers,sellers))
+```
+
+We lose Big_crunch in the join because, although he appears in x = hambugers, his seller KFC does not appear in y = sellers. The join result has all variables from x = hamburgers plus  yr_founded, from y.
+
+###semi_join(hamburgers, sellers)
+*semi_join(x, y): Return all rows from x where there are matching values in y, keeping just columns from x. A semi join differs from an inner join because an inner join will return one row of x for each matching row of y, where a semi join will never duplicate rows of x. This is a filtering join.*
+
+```{r}
+(sjhs<-semi_join(hamburgers,sellers))
+```
+
+We get a similar result as with inner_join() but the join result contains only the variables originally found in x = hamburgers. But note the row order has changed
+
+### left_join(hamburgers, sellers)
+*left_join(x, y): Return all rows from x, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.*
+```{r}
+(ljhs <- left_join(hamburgers, sellers))
+```
+
+We basically get x = hamburgers back, but with the addition of variable yr_founded, which is unique to  y = sellers. Big_chrunk, whose seller does not appear in y = sellers, has an NA for  yr_founded.
+
+### anti_join(hamburgers, sellers)
+*anti_join(x, y): Return all rows from x where there are not matching values in y, keeping just columns from x. This is a filtering join.*
+
+```{r}
+(ajhs <- anti_join(hamburgers,sellers))
+```
+
+We keep only Big_crunch now (and do not get yr_founded).
+
+### inner_join(sellers, hamburgers)
+
+*inner_join(x, y): Return all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.*
+
+```{r}
+(ijsh <- inner_join(sellers,hamburgers))
+```
+
+In a way, this does illustrate multiple matches, if you think about it from the x = sellers direction. Every seller that has a match in y =  hamburgers multiple times in the result, once for each match. In fact, we’re getting the same result as with inner_join(hamburgers,sellers), up to variable order (which you should also never rely on in an analysis).
+
+### semi_join(sellers, hamburgers)
+
+*semi_join(x, y): Return all rows from x where there are matching values in y, keeping just columns from x. A semi join differs from an inner join because an inner join will return one row of x for each matching row of y, where a semi join will never duplicate rows of x. This is a filtering join.*
+
+```{r}
+(sjps <- semi_join(x = sellers, y = hamburgers))
+```
+
+Now the effects of switching the x and y roles is more clear. The result resembles x = sellers, but the seller pizzahut is lost, because there are no observations where seller == "pizzahut" in  y = hamburgers.
+
+### left_join(sellers, hamburgeres)
+
+*left_join(x, y): Return all rows from x, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.*
+
+```{r}
+(ljsh <- left_join(sellers, hamburgers))
+```
+
+We get a similar result as with inner_join() but the seller pizzahut survives in the join, even though no harmburgers from pizzahut appear in y = hamburgers. As a result, pizzahut has NAs for any other features.
+
+### anti_join(sellers, hamburgers)
+
+*anti_join(x, y): Return all rows from x where there are not matching values in y, keeping just columns from x. This is a filtering join.*
+
+```{r}
+(ajsh <- anti_join(sellers, hamburgers))
+```
+
+We keep only seller pizzahut now (and the variables found in x = publishers).
+
+### full_join(hamburgeres, sellers)
+
+*full_join(x, y): Return all rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing. This is a mutating join.*
+
+```{r}
+(fjhs <- full_join(hamburgers, sellers))
+```
+
+We get all rows of x = hamburgers plus a new row from y = sellers, containing the seller pizzahut. We get all variables from x = hamburgers AND all variables from y = sellers. Any row that derives solely from one table or the other carries NAs in the variables found only in the other table.
