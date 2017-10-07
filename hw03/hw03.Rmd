@@ -71,7 +71,7 @@ knitr::kable(out3)
 
 In this plot, we compare life expectations for different years calculated by two different methods. 
 ```{r}
-ggplot(out3,aes(year,mean_trim))+geom_line(color="green")+geom_line(aes(year,weighted_mean),color="red")+labs(x="year", y="Life Expectancy",title="MyPlot")+scale_fill_discrete(name="",labels=c("mean_trim","weighted_mean"))
+ggplot(out3,aes(year,mean_trim))+geom_line(aes(color="mean_trim"))+geom_line(aes(year,weighted_mean,color="weighted_mean"))+labs(x="year", y="Life Expectancy",title="MyPlot")+scale_fill_discrete(name="",labels=c("mean_trim","weighted_mean"))
 ```
 
 **Q4**
@@ -126,4 +126,22 @@ ggplot(mmGDP.plot, aes(x=continent, y=log10(value), fill=variable)) +  geom_bar(
 ylab("Per capita GDP (log transformed)") + xlab("Continent") +
 scale_fill_discrete(name="", labels=c("maximum","minimum"))+
             theme_bw()
+```
+
+```{r}
+T3 <- gapminder %>% 
+  group_by(year) %>% 
+  summarise(mean_LifeExp = mean(lifeExp), 
+            weighted_by_pop = weighted.mean(lifeExp, pop),
+            weighted_by_gdpPercap = weighted.mean(lifeExp, gdpPercap))
+
+knitr::kable(T3)
+```
+```{r}
+P5 <- ggplot(T3, aes(x = year, y = LifeExp)) +
+  geom_line(aes(y = mean_LifeExp, color = "mean_LifeExp")) +
+  geom_line(aes(y = weighted_by_pop, color = "weighted_by_pop")) +
+  geom_line(aes(y = weighted_by_gdpPercap, color = "weighted_by_gdpPercap")) +
+  labs(title = "Means of Life Expectancy for different years")
+P5
 ```
