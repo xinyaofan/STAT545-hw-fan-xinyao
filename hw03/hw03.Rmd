@@ -88,7 +88,7 @@ In this table, we calculated the mean life expectation of different continents e
 ```{r}
 ggplot(gapminder, aes(year, lifeExp)) +
     facet_wrap(~ continent) +
-    geom_point(alpha=0.5) +
+    geom_point(alpha=0.5,aes(color=continent)) +
     geom_smooth(se=FALSE, span=1, method="loess")+theme_bw() +
   labs(title=" LifeExp vs Year")+theme(strip.background = element_rect(fill="light blue"),
           axis.title = element_text(size=14),
@@ -109,3 +109,28 @@ gapminder%>%
 For this homework, I find it not difficult to draw a table for the data except the Question 4, since there are (n-1)differences between n data, it took me a while to consider how to deal with this situation. Table beauty is not a big deal, using knitr::kable could give my tables a beautiful format.<br>
 However, it is a little difficult for me to find the proper type of plot to answer the corresponding questions. For example, I am not sure how to clearly show the maximum and minimum of gdpPercap in a plot. Also, when I draw a boxplot for the gdpPercap in different continents, the boxplot for Africa is not clear. I find it difficult to adjust the size of plots, becasue I am confused about the values of parameter in ggplot. In conlusion, combined tables and plots to analyze a explicit question is not a very easy task.
 
+```{r}
+mmGDP.plot <- melt(mmGDP, id="continent") # reshape the data in order to plot min and max within continents on the same plot
+ggplot(mmGDP.plot, aes(x=continent, y=log10(value), fill=variable)) +  geom_bar(position="dodge", stat="identity") + 
+ylab("Per capita GDP (log transformed)") + xlab("Continent") +
+scale_fill_discrete(name="", labels=c("maximum","minimum"))+
+            theme_bw()
+```
+
+```{r}
+T3 <- gapminder %>% 
+  group_by(year) %>% 
+  summarise(mean_LifeExp = mean(lifeExp), 
+            weighted_by_pop = weighted.mean(lifeExp, pop),
+            weighted_by_gdpPercap = weighted.mean(lifeExp, gdpPercap))
+
+knitr::kable(T3)
+```
+```{r}
+P5 <- ggplot(T3, aes(x = year, y = LifeExp)) +
+  geom_line(aes(y = mean_LifeExp, color = "mean_LifeExp")) +
+  geom_line(aes(y = weighted_by_pop, color = "weighted_by_pop")) +
+  geom_line(aes(y = weighted_by_gdpPercap, color = "weighted_by_gdpPercap")) +
+  labs(title = "Means of Life Expectancy for different years")
+P5
+```
