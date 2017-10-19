@@ -1,12 +1,16 @@
 # STAT545-hw01-fan-xinyao
 # Welcome to my github! This page is made for the course [STAT545](http://stat545.com/)@ UBC
 
-|**Information** |            |
-|----------------|------------|
-| Name           | Xinyao Fan |
-| Gender         | Female     |
-| Department     | Statistics |
-| Status         | Master |
+## Homework Menue
+
+|   **hw**       |        **Coverage**       |
+|----------------|---------------------------|
+| [hw01](hw01)   | Edit README and use Rmd   |
+| [hw02](hw02)   | Explore gapminder and use dplyr|
+| [hw03](hw03)   | Use dplyr to explore data(also gglpot2)|
+| [hw04](hw04)   | Tidy data and joins       |
+| [hw05](hw05)   | Factor and figure management|
+
 ## Education
 - **University of British Columbia**&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sep. 2017 - present
 - **University of Chinese Academy of Sciences**&emsp;&emsp;&emsp;&emsp;Sep. 2016 - June. 2017
