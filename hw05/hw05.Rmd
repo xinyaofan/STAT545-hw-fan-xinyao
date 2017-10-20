@@ -121,7 +121,7 @@ dget("sl2.txt")
 ```
 ## Visualization design
 
-**Remake at least one figure or create a new one, in light of something you learned in the recent class meetings about visualization design and color. Maybe juxtapose your first attempt and what you obtained after some time spent working on it. Reflect on the differences. **
+**Remake at least one figure or create a new one, in light of something you learned in the recent class meetings about visualization design and color. Maybe juxtapose your first attempt and what you obtained after some time spent working on it. Reflect on the differences.**
 
 ```{r}
 sl_drop%>%
