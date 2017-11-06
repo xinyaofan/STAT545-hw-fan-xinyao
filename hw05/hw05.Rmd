@@ -133,7 +133,7 @@ We only care about the aristist whose hotttnesss is beyond 0.6 and draw a spaghe
 ```{r}
 sl3<-sl_drop %>% 
   filter(artist_hotttnesss>0.6)
-ggplot(sl3,aes(x=year,y=artist_hotttnesss))+geom_line(aes(group=artist_name_1),alpha=0.2)
+  ggplot(sl3,aes(x=year,y=artist_hotttnesss))+geom_line(aes(group=artist_name_1),alpha=0.2)
 ```
 
 Now, I pick one artist called "U2" and try to highlight her hotttnesss changes over time by red line.
