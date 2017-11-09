@@ -2,8 +2,7 @@
 title: "hw06"
 author: "Xinyao Fan"
 date: '2017-11-05'
-output: github_document
-always_allow_html: yes
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
