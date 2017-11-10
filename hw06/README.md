@@ -16,4 +16,5 @@
 
 - For topic 2, I wrote two functions for bisection algorithm and Newton_Rapshon algorithm to find MLE(maximum likelihood estimate). Becasue, in my another course" statistics inference", we always need to compute the mle for the parameter and sometimes you cannot get mle easily. So using numerical methods is a good choice.
 
-- For the first problem of topic 2, I wrote a function of quadratic regression,but I don't know how to deal with the formula in function arguments,so the results is a little unclear to see. 
+- For the first problem of topic 2, I wrote a function of quadratic regression,but at first I don't know how to deal with the formula in function arguments,so the results is a little unclear to see. Later, I realized that I could use all.vars(formulas) to extract the elements of a formula. Also, I find a useful [website](https://d.cosx.org/d/101204-101204)
+to change the column name of a list. Using thses two techiques, I could make the results of my quardatic linear regression more clear to see.
