@@ -15,3 +15,5 @@
 - I choose topic 1 and topic 2. For the first topic, I have done the majority of these exercise, some of them are easy while some are really difficult for me. For example, write a regular expression that matches a word if it’s probably written in British English, not American English, What word has the highest number of vowels? What word has the highest proportion of vowels? (Hint: what is the denominator?).I try to figure it out but it still doesn't work. In this part, I have explored the functions in package stingr in detail.
 
 - For topic 2, I wrote two functions for bisection algorithm and Newton_Rapshon algorithm to find MLE(maximum likelihood estimate). Becasue, in my another course" statistics inference", we always need to compute the mle for the parameter and sometimes you cannot get mle easily. So using numerical methods is a good choice.
+
+- For the first problem of topic 2, I wrote a function of quadratic regression,but I don't know how to deal with the formula in function arguments,so the results is a little unclear to see. 
