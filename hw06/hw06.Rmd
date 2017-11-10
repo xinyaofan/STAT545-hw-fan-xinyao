@@ -8,12 +8,16 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r}
 library(tidyverse)
 library(stringr)
 ```
 ## Character data
 Read and work the exercises in the Strings chapter or R for Data Science.<br>
+
+###14.2.5 Exercises
+
 1.In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?<br>
 
 paste() is like concatenation using separation factor, whereas,
@@ -33,7 +37,7 @@ paste0("a","b")
 paste("a","b",sep="-")
 paste0("a","b",sep="-")
 paste(1:4,"a")
-paste(1:4,"a")
+paste0(1:4,"a")
 paste(1:4,"a",sep="-")
 paste0(1:4,"a",sep="-")
 ```
@@ -50,6 +54,7 @@ Answer: sep argument controls how strings are separated, using , or * ect while 
 str_c("x", "y","z", sep = ", ")
 str_c(c("x", "y", "z"), collapse = "  ")
 ```
+
 3.Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?
 ```{r}
 x<-"Apple"
@@ -70,7 +75,8 @@ str_sub(x, m, m)
 
 4.What does str_wrap() do? When might you want to use it?
 This is a wrapper around stri_wrap which implements the Knuth-Plass paragraph wrapping algorithm. When I want to calculate the frenquency of some words in a paragraph, this function is useful.
-Solution: The function str_wrap wraps text so that it fits within a certain width. This is useful for wrapping long strings of text to be typeset.
+Solution: The function str_wrap wraps text so that it fits within a certain width. This is useful for wrapping long strings of text to be typeset.<br>
+
 5.What does str_trim() do? What’s the opposite of str_trim()?
 Trim whitespace from start and end of string.
 ```{r}
@@ -139,7 +145,8 @@ str_commasep(c("a", "b"))
 #> [1] "a, and b"
 str_commasep(c("a", "b", "c"))
 ```
-14.3.1.1
+###14.3.1.1 Exercises
+
 1.Explain why each of these strings don’t match a \: "\", "\\", "\\\".
 solution:
 - "\": This will escape the next character in the R string.
@@ -152,6 +159,7 @@ x <- "a\"\'\\b"
 writeLines(x)
 str_view(x, "\"\'\\\\")
 ```
+
 3.What patterns will the regular expression \..\..\.. match? How would you represent it as a string?
 Solution: It will match any patterns that are a dot followed by any character, repeated three times.
 
@@ -162,9 +170,11 @@ x="a$^$b"
 writeLines(x)
 str_view(x, "\\$\\^\\$")
 ```
+
 ```{r}
 str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 ```
+
 2.Given the corpus of common words in stringr::words, create regular expressions that find all words that:
 Start with “y”.
 End with “x”
@@ -177,6 +187,7 @@ str_view(stringr::words,"x$",match=TRUE)
 str_view(stringr::words,"^...$",match=TRUE)
 str_view(stringr::words,".......",match=TRUE)
 ```
+
 3.Create regular expressions to find all words that:
 Start with a vowel.
 ```{r}
@@ -208,9 +219,6 @@ Is “q” always followed by a “u”?
 ```{r}
 str_view(stringr::words, "q[^u]", match = TRUE)
 ```
-Write a regular expression that matches a word if it’s probably written in British English, not American English.
-```{r}
-```
 Create a regular expression that will match telephone numbers as commonly written in your country.
 ```{r}
 x <- c("123-456-7890", "1235-2351")
@@ -234,11 +242,13 @@ str_view(x,"CC*",match=TRUE)
 str_view(x,"CC{0,}",match=TRUE)
 #they are equal
 ```
+
 2.Describe in words what these regular expressions match: (read carefully to see if I’m using a regular expression or a string that defines a regular expression.)
 ^.*$: Any string
 "\\{.+\\}":Any string with curly braces surrounding at least one character.
 \d{4}-\d{2}-\d{2}:A date in “%Y-%m-%d” format: four digits followed by a dash, followed by two digits followed by a dash, followed by another two digits followed by a dash.
 "\\\\{4}":\\{4}:This resolves to the regex \\{4}, which is four backslashes.
+
 3.Create regular expressions to find all words that:
 Start with three consonants.
 Have three or more vowels in a row.
@@ -250,6 +260,7 @@ str_view(stringr::words,"[^aeiou]{2,}",match=TRUE)
 #or
 str_view(words, "([aeiou][^aeiou]){2,}", match = TRUE)
 ```
+
 ###14.3.5 Grouping and backreferences
 1.Construct regular expressions to match words that:
 Start and end with the same character.
@@ -266,17 +277,18 @@ str_view(fruit, "(..)\\1", match = TRUE)
 (..)\1: Any two characters repeated. E.g. “a1a1”.
 "(.).\\1.\\1": A character followed by any character, the original character, any other character, the original character again. E.g. “abaca”, “b8b.b”.
 "(.)(.)(.).*\\3\\2\\1": Three characters followed by zero or more characters of any kind followed by the same three characters but in reverse order. E.g. “abcsgasgddsadgsdgcba” or “abccba” or “abc1cba”.
+
 2.Construct regular expressions to match words that:
-Start and end with the same character.<br>
+1。Start and end with the same character.<br>
 ```{r}
 str_view(words, "^(.).*\\1$", match = TRUE)
 ```
-Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)<br>
+2.Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)<br>
 ```{r}
 str_view(words, "(..).*\\1", match = TRUE)
 str_view(str_to_lower(words), "([a-z][a-z]).*\\1", match = TRUE)
 ```
-Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)<br>
+3.Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)<br>
 ```{r}
 str_view(words, "(.).*\\1.*\\1", match = TRUE)
 ```
@@ -353,6 +365,7 @@ or
 prop_vowels <- str_count(words, "[aeiou]") / str_length(words)
 words[which(prop_vowels == max(prop_vowels))]
 ```
+
 ###14.4.3.1
 1.Modify the regex to fix the problem.
 ```{r}
@@ -369,8 +382,8 @@ colour_match2
 more2 <- sentences[str_count(sentences, colour_match) > 1]
 str_view_all(more2, colour_match2, match = TRUE)
 ```
-2.
-The first word from each sentence.
+2.From the Harvard sentences data, extract:
+(1).The first word from each sentence.
 ```{r}
 str_extract(sentences, "[a-zA-X]+") %>% head()
 ```
@@ -378,18 +391,19 @@ or
 ```{r}
 head(str_extract_all(sentences,"^[^\ ]+", simplify = TRUE))
 ```
-All words ending in ing.
+(2).All words ending in ing.
 ```{r}
 pattern <- "\\b[A-Za-z]+ing\\b"
 sentences_with_ing <- str_detect(sentences, pattern)
 unique(unlist(str_extract_all(sentences[sentences_with_ing], pattern))) %>%
 head()
 ```
-All plurals.
+(3).All plurals.
 ```{r}
 unique(unlist(str_extract_all(sentences, "\\b[A-Za-z]{3,}s\\b"))) %>%
   head()
 ```
+
 ###14.4.4.1 Exercises
 1.Find all words that come after a “number” like “one”, “two”, “three” etc. Pull out both the number and the word.
 ```{r}
@@ -397,6 +411,7 @@ numword <- "(one|two|three|four|five|six|seven|eight|nine|ten) +(\\S+)"
 sentences[str_detect(sentences, numword)] %>%
   str_extract(numword)
 ```
+
 2.Find all contractions. Separate out the pieces before and after the apostrophe.
 ```{r}
 contraction <- "([A-Za-z]+)'([A-Za-z]+)"
@@ -410,10 +425,7 @@ Replace all forward slashes in a string with backslashes.
 s<-"I has an apple/."
 str_replace(s,"\\/","\\\\")
 ```
-Implement a simple version of str_to_lower() using replace_all().
-```{r}
 
-```
 Switch the first and last letters in words. Which of those strings are still words?
 
 ###14.4.6.1 Exercises
@@ -436,8 +448,9 @@ Splitting by boundary("word") splits on punctuation and not just whitespace.<br>
 str_split("ab. cd|agt", "")[[1]]
 ```
 It splits the string into individual characters.
+
 ### 14.5.1 Exercises
-How would you find all strings containing \ with regex() vs. with fixed()?
+1.How would you find all strings containing \ with regex() vs. with fixed()?
 ```{r}
 x<-c("\\abc","e","a\\b")
 x
@@ -449,7 +462,7 @@ or
 str_subset(c("a\\b", "ab"), "\\\\")
 str_subset(c("a\\b", "ab"), fixed("\\"))
 ```
-What are the five most common words in sentences?
+2.What are the five most common words in sentences?
 ```{r}
 str_extract_all(sentences, boundary("word")) %>%
   unlist() %>%
@@ -471,17 +484,95 @@ Generate random text. There are several functions beginning with stri_rand_. str
 Use the locale argument to the opts_collator argument.
 
 ## Writing Functions
+(1) You could generalize that to do quadratic regression (include a squared term) or use robust regression, using MASS::rlm() or robustbase::lmrob().
 ```{r}
 library(gapminder)
-library(ggplot2)
-suppressPackageStartupMessages(library(dplyr))
+data<-gapminder
+Q_fit<-function(formula) {
+  cov_name<-all.vars(formula)[-1]#get the covirate name of the formula
+  re_name<-all.vars(formula)[1]  #get the response name of the formula
+  subdata<-subset(data,select = all.vars(formula))
+  covirate<-subset(subdata,select=cov_name) #get the data of the covirate variable
+  response<-subset(subdata,select=re_name) #get the data of the response variable
+  qcov=covirate^2
+  cov1=cbind(covirate,qcov)
+  n=length(cov_name)
+  for(i in 1:n){
+    names(cov1)[i+n]=paste("q.",cov_name[i])
+  }
+  coeficient<-as.matrix(cov1)
+  fit<-lm(as.matrix(response)~coeficient)
+}
+summary(Q_fit(lifeExp ~ year+gdpPercap))
 ```
 
+
+
+(2) Write your own functions.
+In statistics, MLE(maximum likelihood estimates) is really important. Maximum likelihood estimates (MLEs) of model parameters are obtained
+by maximizing the likelihood. MLEs have nice asymptotic properties such as consistency, efficiency,and asymptotic normality. Sometimes, mle can not be easily obtained. In these cases, we can use numerical methods to get the mle such as bisection or Newton_Raphson methods.
 ```{r}
-Ge_fit <- function(response,covriate) {
-  qcov=covriate^2
-  cov1=cbind(covriate,qcov)
-  the_fit<-lm(response~cov1)
+x<-c(0.6944788, 0.3285051, 0.7165376, 0.8865894, 1.0858084,
+     0.4040884, 1.0538935, 1.2487677, 1.1523552, 0.9977360,
+     0.7251880, 1.0716697, 1.0382114, 1.1535934, 0.9175693,
+     0.5537849, 0.9701821, 0.5486354, 1.0168818, 0.5193687
+)
+func<-function(theta){
+  20/theta+sum(log(x))-sum((x**(theta))*log(x))
 }
-Ge_fit(gapminder$lifeExp, gapminder$year)
+bisection <- function(f, a, b, n = 1000, tol = 1e-7) {
+  # If the signs of the function at the evaluated points, a and b, stop the function and return message.
+  if (f(a)*f(b)>0) {
+    stop('finding root is fail')
+  } 
+  for (i in 1:n) {
+    c <- (a + b) / 2 
+    if ((f(c) == 0) || ((b - a) / 2) < tol) {
+      return(c)
+    }
+    
+    ifelse(sign(f(c)) == sign(f(a)), 
+           a <- c,
+           b <- c)
+  }
+  print('Too many iterations')
+}
+bisection(func,3.5,4.5)
+
 ```
+
+So, the MLE of $\theta$ is 3.934207 for the observed samples.
+Now, we try to use newton_rapshon algorithm.
+```{r}
+library(numDeriv)
+newton.raphson <- function(f, a, b, tol = 1e-5, n = 1000) {
+  x0 <- a # Set start value to supplied lower bound
+  k <- n # Initialize for iteration results
+  
+  # Check the upper and lower bounds to see if approximations result in 0
+  fa <- f(a)
+  if (fa == 0.0) {
+    return(a)
+  }
+  
+  fb <- f(b)
+  if (fb == 0.0) {
+    return(b)
+  }
+  
+  for (i in 1:n) {
+    dx <- genD(func = f, x = x0)$D[1] # First-order derivative f'(x0)
+    x1 <- x0 - (f(x0) / dx) # Calculate next value x1
+    k[i] <- x1 
+    if (abs(x1 - x0) < tol) {
+      root.approx <- tail(k, n=1)
+      res <- list('root approximation' = root.approx, 'iterations' = (k[1:5]))
+      return(res)
+    }
+
+  x0<-x1
+  }
+}
+newton.raphson(func,1,4.5)
+```
+From the above code, the first 5 iterations are 1.801617 2.833315 3.651969 3.916630 3.934140 and the estimator is 3.934207.
