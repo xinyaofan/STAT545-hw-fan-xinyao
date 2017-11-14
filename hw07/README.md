@@ -2,12 +2,14 @@
 ## Welcome to my github 
    
 ### Links for Homework 7
-I wrote 3 R scripts to do some data analyse.
+I wrote 3 R scripts to do some data analyse and write a Makefile to automate my pipeline using make.
  - [explor_analyse](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/explor_analyse.r)
  
  - [stat_analyses](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/stat_analyses.r)
  
  - [Graph.R](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/Graph.R)
+ 
+ -[makefile](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/Makefile)
  
  You can read my report in the following links.
  - [hw07.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/report.md)
