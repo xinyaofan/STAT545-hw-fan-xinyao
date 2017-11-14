@@ -9,7 +9,7 @@ I wrote 3 R scripts to do some data analyse and write a Makefile to automate my 
  
  - [Graph.R](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/Graph.R)
  
- -[makefile](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/Makefile)
+ - [makefile](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/Makefile)
  
  You can read my report in the following links.
  - [hw07.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/report.md)
