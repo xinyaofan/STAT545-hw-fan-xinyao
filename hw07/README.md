@@ -2,7 +2,7 @@
 ## Welcome to my github 
    
 ### Links for Homework 7
-I wrote 3 R scripts to do some data analyse and one Rmd file to generate my report.
+I wrote 3 R scripts to do some data analyse.
  - [explor_analyse](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/explor_analyse.r)
  
  - [stat_analyses](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw07/stat_analyses.r)
