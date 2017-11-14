@@ -18,7 +18,7 @@ I wrote 3 R scripts to do some data analyse.
  In this homework, I first create 3 R scripts: explor_analyse.r, stat_analyses.r, Graph.R to do some small data analysis.
 
 - In explore_analyse.r: read the data, reorder the continents based on life expectancy and write numerical data to file in CSV or TSV format. 
-- In stat_analyses.r: Give estimated intercepts, slopes, and residual error variance of linear regression (lifExp vs year) for each country.
+- In stat_analyses.r: Give estimated intercepts, slopes, and residual error variance of linear regression (lifExp vs year) for each country.Also, find the 3 or 4 “worst” and “best” countries for each continent.
 - In Graph.R: Create scatterplots of life expectancy vs. year for each continent.
 Then I write a Makefile to automate my pipeline using make and genearate the final report.html.
 
