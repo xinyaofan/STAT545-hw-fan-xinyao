@@ -2,7 +2,7 @@
 title: "Hw07"
 author: "Xinyao Fan"
 date: "November 12, 2017"
-output: github_document
+output: html_document
 ---
 ###Introduction
 We will deal with the dataset "gapminder" in this homework, and try to explore the relationship of lifExp and year.
