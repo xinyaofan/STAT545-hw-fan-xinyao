@@ -11,5 +11,6 @@
 - [x] Add parameters to the plot.
 - [x] Allow the user to download the results table as a ..csv file
 - [x] Fix the warning message when filter returns 0 result.
+- [x] Show the number of results found whenever the filters change.
 - [ ] Place the plot and the table in separate tabs.
 ### Report of Process
