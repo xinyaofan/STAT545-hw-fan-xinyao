@@ -7,11 +7,11 @@ server <- function(input, output) {
 	bcl_data<-read.csv("data/bcl-data.csv")
 	Filtered_bcl<-reactive({
 	  if(input$countryInput=="All"){
-	      filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
-	             Type==input$typeIn)
+	   filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
+	   Type==input$typeIn)
 	  }else{
 	  filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
-						 Type==input$typeIn,Country == input$countryInput)
+		Type==input$typeIn,Country == input$countryInput)
 	  }
 	})
 	
