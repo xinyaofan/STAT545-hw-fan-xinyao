@@ -16,6 +16,7 @@ your local computer. What's more, you can choose your favorite color for the bar
 - [x] Allow the user to download the results table as a ..csv file
 - [x] Fix the warning message when filter returns 0 result.
 - [x] Show the number of results found whenever the filters change.
+- [x] Allow the user to search for multiple alcohol types simultaneously.
 - [x] Place the plot and the table in separate tabs.
 - [x] Show results from all countries(instead of forcing a filter by only one specific country).
 ### Report of Process
