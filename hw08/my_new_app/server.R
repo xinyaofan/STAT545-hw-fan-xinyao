@@ -8,10 +8,10 @@ server <- function(input, output) {
 	Filtered_bcl<-reactive({
 	  if(input$countryInput=="All"){
 	   filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
-	   Type==input$typeIn)
+	   Type%in%input$typeIn)
 	  }else{
 	  filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
-		Type==input$typeIn,Country == input$countryInput)
+		Type%in%input$typeIn,Country == input$countryInput)
 	  }
 	})
 	
