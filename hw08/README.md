@@ -10,5 +10,6 @@
 - [x] Use the DT package to turn the current results table into an interactive table.
 - [x] Add parameters to the plot.
 - [x] Allow the user to download the results table as a ..csv file
+- [x] Fix the warning message when filter returns 0 result.
 - [ ] Place the plot and the table in separate tabs.
 ### Report of Process
