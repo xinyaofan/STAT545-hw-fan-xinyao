@@ -6,21 +6,30 @@ library(shiny)
 server <- function(input, output) {
 	bcl_data<-read.csv("data/bcl-data.csv")
 	Filtered_bcl<-reactive({
-		bcl_data%>%
-	  filter(Price>=input$priceIn[1],Price<=input$priceIn[2],
+	  if(input$countryInput=="All"){
+	      filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
+	             Type==input$typeIn)
+	  }else{
+	  filter(bcl_data,Price>=input$priceIn[1],Price<=input$priceIn[2],
 						 Type==input$typeIn,Country == input$countryInput)
+	  }
 	})
 	
  output$Hist_AlcCont<-renderPlot({
- 	  Filtered_bcl()%>%
-		ggplot()+aes(x=Alcohol_Content)+
+ 	  if(nrow(Filtered_bcl())==0){
+ 	    return(NULL)
+ 	  }else{
+		ggplot(Filtered_bcl())+aes(x=Alcohol_Content)+
  		geom_histogram(bg = input$col,col = input$col)
-		})
+		}})
  
  output$table_head<-DT::renderDataTable({
+   if(nrow(Filtered_bcl())==0){
+     return(NULL)
+   }else{
 			dat<-Filtered_bcl()
 			DT::datatable(dat)
-	})
+	}})
  datasetInput <- reactive({
  		Filtered_bcl()
  })
