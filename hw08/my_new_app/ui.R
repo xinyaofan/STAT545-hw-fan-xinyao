@@ -13,6 +13,7 @@ ui <- fluidPage(
   selectInput("countryInput", "Country",choices = c("CANADA", "FRANCE", "ITALY","Belgium","All")),
   textOutput("selected_var"),
   downloadLink('downloadData', 'Download the results table here'),
+  downloadButton("bcl-data.csv","Download raw data"),
   colourInput("col", "Choose color for the bars", "pink")),
   mainPanel(tabsetPanel(
               tabPanel("Histogram", plotOutput("Hist_AlcCont")),

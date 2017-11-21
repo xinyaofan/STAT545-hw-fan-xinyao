@@ -42,6 +42,11 @@ server <- function(input, output) {
  	 write.csv(datasetInput(),file,row.names = FALSE)
  	 }
  	)
+ output$`bcl-data.csv` <- downloadHandler(
+   filename = "bcl-data.csv",
+   content = function(file) {
+     write_csv(bcl_data, file)
+   })
  output$selected_var <- renderText({ 
    n<-nrow(Filtered_bcl())
    paste("We found",n,"options for you")

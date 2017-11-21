@@ -5,8 +5,8 @@ account: xinyaofan
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 236351
-bundleId: 1083896
+bundleId: 1088424
 url: https://xinyaofan.shinyapps.io/sample_for_547/
-when: 1511079944.8009
+when: 1511287897.66548
 asMultiple: FALSE
 asStatic: FALSE
