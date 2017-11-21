@@ -8,7 +8,7 @@ products in the results table on the right of screen. Also, you can download the
 your local computer. What's more, you can choose your favorite color for the bars of historgram~!
 
  - [link of app](https://xinyaofan.shinyapps.io/sample_for_547/)
- **(You can view my code in my_new_app folder)**
+ **(You can view my code in [my_new_app folder](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/tree/master/hw08/my_new_app))**
 ### Add features to my app
 - [x] Sort the results table by price
 - [x] Add an image of the BC Liquor Store to the UI
