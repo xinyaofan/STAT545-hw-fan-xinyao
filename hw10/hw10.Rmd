@@ -19,21 +19,16 @@ library(forcats)
 
 ```
 
-## Scrape data
+## Scrape data from the website
 
-I want to extract some information from the following link:
-
+I am interested in the 200 greatest women artists, so I try to download the data from the billboard website and then do some data analysis.
 ```{r}
 my_url <- "https://www.billboard.com/charts/greatest-billboard-200-women-artists"
 page_title <- read_html(my_url)
 ```
 
-I write three functions to extract the 1) Album name, 2) Artist name, 3) Rank among the greatest 200 albums ranked by billboard and 4) The artist's profile link. The extracted data are put into a dataframe.
-
-In order to correctly extract the link, I used some `stringr` functions to manipulate the patterns.
-
+First, I extract the artist name,the rank and also the link for each artist from the website and put all the data into a dataframe.
 ```{r}
-
 get_artist <- function(my_link) {
   my_link %>% 
     read_html() %>% 
@@ -50,10 +45,8 @@ get_rank <- function(my_link) {
     html_text() %>% 
     return()
 }
-
 Artist <- get_artist(my_url)
 rank <- get_rank(my_url)
-
 df <- data_frame(rank = rank,
                  Artist = Artist,
             Link=glue("https://www.billboard.com/music/{Artist}")%>% 
@@ -66,11 +59,12 @@ df <- data_frame(rank = rank,
                    str_replace_all("!",""))
 ```
 
+However, I notice that the artist Mary J. Blige's link is not match the artist name, so I try to replace the link with the correct one.
 ```{r}
 df$Link[18] <- "https://www.billboard.com/music/mary-j-blige"
 ```
 
-Next, we want to extract some statistics inside each artist's profile page. The statistics include 1) the number of No.1 hits for this artist, 2) the number of top-10 hits for this artist and 3) number of songs recorded for this artist by billboard.
+Next, I extracted the statistics nested in each artist's page: No1hit,Top10hits,songs and put all this information into a dataframe.
 
 ```{r}
 get_stats <- function(link) {
@@ -82,8 +76,6 @@ get_stats <- function(link) {
 }
 ```
 
-Since some of the pages are not found in billboard, I used possibly to handle these missing information. Statistics are then extracted from each artist.
-
 ```{r warning=FALSE}
 get_stats_safe <- purrr::possibly(get_stats, "None available")
 
@@ -91,8 +83,7 @@ df <- df %>%
   mutate(Stats = map(Link, get_stats_safe))
 ```
 
-Since the three statistics are combined into one vector on the billboard page, it would be more convenient to seperate them into three columns for downstram analysis. The cleaned dataframe is called df_clean.
-
+Since some artists don't have data of No1Hit and Top10Hits. So, we have to judge the length of the vector Stats. For the missing information,such as NO1Hit, Top10Hits, we replace the NA by O.
 ```{r warning=FALSE}
 No1Hits<-c()
 Top10Hits<-c()
@@ -134,8 +125,13 @@ write_csv(df_new, "women_200.csv")
 ```
 
 ## Data Analysis
-A overview of 
-First, we filter the artists whose No.1 Hits songs>5.
+```{r}
+ggplot(df_new, aes(Top10Hits))+geom_histogram()+
+  ggtitle("Histogram of Top 10 Hits for Best 200 Albums") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Then, we filter the artists whose No.1 Hits songs>5 and look the detailed information.
 ```{r}
 out1<-df_new%>%
 	filter(No1Hits>5)%>%
@@ -148,6 +144,7 @@ df_new%>% #use fac_order
   filter(No1Hits>5) %>%
   ggplot(aes(y=fct_reorder(Artist, Songs, max,.desc = TRUE),x=Songs)) + geom_point()+scale_y_discrete("artist_name")
 ```
+
 Now, we want to explore the ratio of Top10 hits songs vs all the singer's songs and arrange them.
 ```{r}
 out2<-df_new%>%
@@ -159,8 +156,3 @@ out2<-df_new%>%
 knitr::kable(out2)
 ```
 
-```{r}
-ggplot(df_new, aes(Top10Hits))+geom_histogram()+
-  ggtitle("Histogram of Top 10 Hits for Best 200 Albums") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
