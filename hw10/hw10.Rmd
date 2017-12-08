@@ -27,7 +27,7 @@ my_url <- "https://www.billboard.com/charts/greatest-billboard-200-women-artists
 page_title <- read_html(my_url)
 ```
 
-First, I extract the artist name,the rank and also the link for each artist from the website and put all the data into a dataframe.
+First, I extract the artist name,the rank and also the link for each artist from the website and put all the data into a dataframe. Use stringr package to set the right link for each singer.
 ```{r}
 get_artist <- function(my_link) {
   my_link %>% 
@@ -59,7 +59,7 @@ df <- data_frame(rank = rank,
                    str_replace_all("!",""))
 ```
 
-However, I notice that the artist Mary J. Blige's link is not match the artist name, so I try to replace the link with the correct one.
+However, I notice that the artist Mary J. Blige's link is not match wiht the artist name, so I try to replace the link with the correct one.
 ```{r}
 df$Link[18] <- "https://www.billboard.com/music/mary-j-blige"
 ```
@@ -76,6 +76,8 @@ get_stats <- function(link) {
 }
 ```
 
+Use possibly to hand with the missing information.
+
 ```{r warning=FALSE}
 get_stats_safe <- purrr::possibly(get_stats, "None available")
 
@@ -83,7 +85,7 @@ df <- df %>%
   mutate(Stats = map(Link, get_stats_safe))
 ```
 
-Since some artists don't have data of No1Hit and Top10Hits. So, we have to judge the length of the vector Stats. For the missing information,such as NO1Hit, Top10Hits, we replace the NA by O.
+Since some artists don't have data of No1Hit and Top10Hits. So, we have to judge the length of the vector Stats. For the missing information,such as NO1Hit, Top10Hits, we replace the NA by "O".
 ```{r warning=FALSE}
 No1Hits<-c()
 Top10Hits<-c()
@@ -125,19 +127,24 @@ write_csv(df_new, "women_200.csv")
 ```
 
 ## Data Analysis
+First, we give an overview of the distribution for Top 10 Hits in our data.
 ```{r}
 ggplot(df_new, aes(Top10Hits))+geom_histogram()+
-  ggtitle("Histogram of Top 10 Hits for Best 200 Albums") +
+  ggtitle("Histogram of Top 10 Hits for greates 200 women") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-Then, we filter the artists whose No.1 Hits songs>5 and look the detailed information.
+Then, we filter the artists whose No.1 Hits songs>5 and look the detailed information. Arrange by # of No.1 Hits songs.
 ```{r}
 out1<-df_new%>%
 	filter(No1Hits>5)%>%
-	select(rank,Artist,No1Hits,Top10Hits,Songs)
+	select(rank,Artist,No1Hits,Top10Hits,Songs)%>%
+  arrange(No1Hits)
 knitr::kable(out1)
 ```
+
+We found that Mariah Carey has the most No.1 Hit songs.
+Now, for these singers, we arrange them by the number of their songs and give a plot.
 
 ```{r}
 df_new%>% #use fac_order
@@ -156,3 +163,4 @@ out2<-df_new%>%
 knitr::kable(out2)
 ```
 
+We could find that Destiney's child only have 14 songs, but 10 of them are the TOP10Hits songs!
