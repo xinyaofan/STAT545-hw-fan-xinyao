@@ -1,0 +1,165 @@
+---
+title: "hw10"
+author: "Xinyao Fan"
+date: "December 5, 2017"
+output: github_document
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(magrittr)
+library(purrr)
+library(glue)
+library(stringr)
+library(rvest)
+library(xml2)
+library(ggplot2)
+library(httr)
+library(forcats)
+
+```
+
+## Scrape data
+
+I want to extract some information from the following link:
+
+```{r}
+my_url <- "https://www.billboard.com/charts/greatest-billboard-200-women-artists"
+page_title <- read_html(my_url)
+```
+
+I write three functions to extract the 1) Album name, 2) Artist name, 3) Rank among the greatest 200 albums ranked by billboard and 4) The artist's profile link. The extracted data are put into a dataframe.
+
+In order to correctly extract the link, I used some `stringr` functions to manipulate the patterns.
+
+```{r}
+
+get_artist <- function(my_link) {
+  my_link %>% 
+    read_html() %>% 
+    html_nodes(css = ".chart-row__artist") %>% 
+    html_text() %>%
+    str_trim(side = "both") %>% 
+    return()
+}
+
+get_rank <- function(my_link) {
+  my_link %>% 
+    read_html() %>% 
+    html_nodes(css = ".chart-row__current-week") %>% 
+    html_text() %>% 
+    return()
+}
+
+Artist <- get_artist(my_url)
+rank <- get_rank(my_url)
+
+df <- data_frame(rank = rank,
+                 Artist = Artist,
+            Link=glue("https://www.billboard.com/music/{Artist}")%>% 
+                   str_to_lower() %>% 
+                   str_replace_all(" ","-") %>% 
+                   str_replace_all("&","") %>% 
+                   str_replace_all("'","") %>% 
+                   str_replace_all("--","-") %>% 
+                   str_replace_all(",","") %>% 
+                   str_replace_all("!",""))
+```
+
+```{r}
+df$Link[18] <- "https://www.billboard.com/music/mary-j-blige"
+```
+
+Next, we want to extract some statistics inside each artist's profile page. The statistics include 1) the number of No.1 hits for this artist, 2) the number of top-10 hits for this artist and 3) number of songs recorded for this artist by billboard.
+
+```{r}
+get_stats <- function(link) {
+  link %>% 
+    read_html() %>% 
+    html_nodes(css = ".artist-section--chart-history__stats__stat--number") %>% 
+    html_text() %>% 
+    return()
+}
+```
+
+Since some of the pages are not found in billboard, I used possibly to handle these missing information. Statistics are then extracted from each artist.
+
+```{r warning=FALSE}
+get_stats_safe <- purrr::possibly(get_stats, "None available")
+
+df <- df %>% 
+  mutate(Stats = map(Link, get_stats_safe))
+```
+
+Since the three statistics are combined into one vector on the billboard page, it would be more convenient to seperate them into three columns for downstram analysis. The cleaned dataframe is called df_clean.
+
+```{r warning=FALSE}
+No1Hits<-c()
+Top10Hits<-c()
+Songs<-c()
+
+for (i in 1:50) {
+	if(length(df$Stats[[i]])==3){
+	No1Hits[i]<-df$Stats[[i]][1]
+	Top10Hits[i]<-df$Stats[[i]][2]
+	Songs[i]<-df$Stats[[i]][3]
+	}else if(length(df$Stats[[i]])==2)
+  { No1Hits[i]<-0
+     Top10Hits[i]<-df$Stats[[i]][1]
+    Songs[i]<-df$Stats[[i]][2]
+	}else if(length(df$Stats[[i]])==1)
+	{ 
+		No1Hits[i]<-0
+		Top10Hits[i]<-0
+	  Songs[i]<-df$Stats[[i]][1]
+	
+	}
+ 
+}
+
+df_new<- data_frame(rank = rank,
+                 Artist = Artist,
+                 Link = glue("https://www.billboard.com/music/{Artist}") %>% 
+                   str_to_lower() %>% 
+                   str_replace_all(" ","-") %>% 
+                   str_replace_all("&","") %>% 
+                   str_replace_all("'","") %>% 
+                   str_replace_all("--","-") %>% 
+                   str_replace_all(",","") %>% 
+                   str_replace_all("!",""),
+                 No1Hits=as.numeric(No1Hits),
+                 Top10Hits=as.numeric(Top10Hits),
+                 Songs=as.numeric(Songs))
+write_csv(df_new, "women_200.csv")
+```
+
+## Data Analysis
+A overview of 
+First, we filter the artists whose No.1 Hits songs>5.
+```{r}
+out1<-df_new%>%
+	filter(No1Hits>5)%>%
+	select(rank,Artist,No1Hits,Top10Hits,Songs)
+knitr::kable(out1)
+```
+
+```{r}
+df_new%>% #use fac_order
+  filter(No1Hits>5) %>%
+  ggplot(aes(y=fct_reorder(Artist, Songs, max,.desc = TRUE),x=Songs)) + geom_point()+scale_y_discrete("artist_name")
+```
+Now, we want to explore the ratio of Top10 hits songs vs all the singer's songs and arrange them.
+```{r}
+out2<-df_new%>%
+	mutate(prob=(-Top10Hits/Songs))%>%
+	arrange(prob)%>%
+	filter(abs(prob)>0.55)%>%
+	select(rank,Artist,Top10Hits,Songs)%>%
+	mutate(prob=Top10Hits/Songs)
+knitr::kable(out2)
+```
+```{r}
+ggplot(df_new, aes(Top10Hits))+geom_histogram()+
+  ggtitle("Histogram of Top 10 Hits for Best 200 Albums") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
