@@ -158,6 +158,7 @@ out2<-df_new%>%
 	mutate(prob=Top10Hits/Songs)
 knitr::kable(out2)
 ```
+
 ```{r}
 ggplot(df_new, aes(Top10Hits))+geom_histogram()+
   ggtitle("Histogram of Top 10 Hits for Best 200 Albums") +
