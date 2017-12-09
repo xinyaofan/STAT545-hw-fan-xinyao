@@ -1,7 +1,7 @@
 
 ## Welcome to my github 
    You can review my work clicking following links
-### Links for Homework 6
+### Links for Homework 10
 
  - [hw10.md](https://github.com/xinyaofan/STAT545-hw-fan-xinyao/blob/master/hw10/hw10.md)
 
