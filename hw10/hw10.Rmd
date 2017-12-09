@@ -16,7 +16,40 @@ library(xml2)
 library(ggplot2)
 library(httr)
 library(forcats)
+library(countrycode)
+library(geonames)
+library(gapminder)
+```
+## Use an R package that wraps an API
+Many APIs have purpose-built R packages that make it even easier to get data from them. I created an account and get the data from Geonames.
+I found in GNcountryInfo dataset, the countryname is not match with our gapminder dataset, thus I use countrycode function to add a new column "country" in our dataset.
+```{r}
+options(geonamesUsername = "xinyao")
+GNInfo<- GNcountryInfo() %>%
+    mutate(country = countrycode(isoAlpha3,'iso3c','country.name'))
+```
 
+Now, we could join the two dataset and get a new dataset to do analysis.
+```{r}
+newdata<-left_join(GNInfo,gapminder,by='country')
+```
+
+After that, we calculate the popluation density. Formula:pop/areaInSqkm
+```{r}
+newdata$areaInSqKm<-as.numeric(newdata$areaInSqKm)
+newdata<-newdata%>%
+  select(country,pop,areaInSqKm,year,continent.x)%>%
+  na.omit()%>%
+  mutate(popDensity=pop/areaInSqKm)
+```
+
+Finally, we could draw a plot, replace the pop by the pop density.
+```{r}
+ggplot(subset(newdata, continent.x != "Oceania"),
+       aes(x = year, y = popDensity, group = country, color = country)) +
+  geom_line(lwd = 1, show.legend = FALSE) + facet_wrap(~ continent.x) +
+  scale_color_manual(values = country_colors) + theme_bw() +
+  theme(strip.text = element_text(size = rel(1.1))) + scale_y_log10()
 ```
 
 ## Scrape data from the website
@@ -76,7 +109,7 @@ get_stats <- function(link) {
 }
 ```
 
-Use possibly to hand with the missing information.
+Use possibly to handle with the missing information.
 
 ```{r warning=FALSE}
 get_stats_safe <- purrr::possibly(get_stats, "None available")
@@ -144,7 +177,7 @@ knitr::kable(out1)
 ```
 
 We found that Mariah Carey has the most No.1 Hit songs.
-Now, for these singers, we arrange them by the number of their songs and give a plot.
+Now, for these singers, we arrange them by the number of their songs and draw a plot.
 
 ```{r}
 df_new%>% #use fac_order
